@@ -2,7 +2,11 @@ import { createClient } from '@/utils/supabase/server'
 
 export default async function Page() {
   const supabase = await createClient()
-  const { data: notes } = await supabase.from('notes').select()
+  const { data: schedules } = await supabase.from('schedules').select('*')
 
-  return <div>{JSON.stringify(notes, null, 2)}</div>
+  return (
+    <div>
+      {JSON.stringify(schedules)}
+    </div>
+  )
 }
